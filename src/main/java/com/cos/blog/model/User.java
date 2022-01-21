@@ -6,12 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 // ORM -> Java(다른 언어 포함) Object -> table로 매핑
 
+// @DynamicInsert // insert시에 null인 피드를 제외시켜줌
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,8 +34,9 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @ColumnDefault("'user'")
-    private String roll; // Enum을 쓰는게 좋음 (admin / user / manager)
+    // @ColumnDefault("'user'")
+    @Enumerated(EnumType.STRING)
+    private RoleType roll; // Enum을 쓰는게 좋음 (admin / user / manager)
 
     @CreationTimestamp // 시간이 자동 입력
     private Timestamp createDate;
