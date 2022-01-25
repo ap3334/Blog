@@ -97,10 +97,10 @@ public class DummyControllerTest {
         System.out.println("userName = " + user.getUserName());
         System.out.println("password = " + user.getPassword());
         System.out.println("email = " + user.getEmail());
-        System.out.println("roll = " + user.getRoll());
+        System.out.println("roll = " + user.getRole());
         System.out.println("createDate = " + user.getCreateDate());
 
-        user.setRoll(RoleType.USER);
+        user.setRole(RoleType.USER);
         userRepository.save(user);
 
         return "회원가입이 완료되었습니다.";

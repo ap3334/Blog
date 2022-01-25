@@ -36,7 +36,7 @@ public class User {
 
     // @ColumnDefault("'user'")
     @Enumerated(EnumType.STRING)
-    private RoleType roll; // Enum을 쓰는게 좋음 (admin / user / manager)
+    private RoleType role; // Enum을 쓰는게 좋음 (admin / user / manager)
 
     @CreationTimestamp // 시간이 자동 입력
     private Timestamp createDate;

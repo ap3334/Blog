@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * DAO
  * 이미 함수를 다 가지고 있음
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Repository;
   */
 @Repository // 생략 가능
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+    Optional<User> findByUserName(String username);
 
 }
 

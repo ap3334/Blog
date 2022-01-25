@@ -28,10 +28,9 @@ public class Board {
     @Lob // 대용량 데이터
     private String content; // 섬머노트 라이브러리 사용 -> <html> 태그가 섞여서 디자인 됨 -> 용량 커짐
 
-    @ColumnDefault("0")
     private int count; // 조회수
 
-    @ManyToOne // Many = Board, One = User
+    @ManyToOne(fetch = FetchType.EAGER) // Many = Board, One = User
     @JoinColumn(name="userId")
     private User user; // DB는 오브젝트를 저장할 수 없음 (FK 사용), 자바는 오브젝트 저장 가능 -> 충돌 발생
 
