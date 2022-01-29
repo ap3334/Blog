@@ -37,10 +37,22 @@ public class UserService {
                     return new IllegalArgumentException("회원 찾기 실패");
                 });
 
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        persistance.setPassword(encPassword);
-        persistance.setEmail(user.getEmail());
+        if (persistance.getOauth() == null || persistance.getOauth().equals("")) {
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            persistance.setPassword(encPassword);
+            persistance.setEmail(user.getEmail());
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public User 회원찾기(String userName) {
+
+        User user =  userRepository.findByUserName(userName).orElseGet(() -> {
+            return new User();
+        });
+
+        return user;
     }
 
 

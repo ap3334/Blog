@@ -9,6 +9,9 @@ let index = {
         $("#btn-delete").on("click", () => {
             this.deleteById();
         });
+        $("#btn-reply-save").on("click", () => { // this를 바인딩 하기 위해서 화살표 함수 사용
+            this.replySave();
+        });
     },
 
     save: function() {
@@ -80,6 +83,29 @@ let index = {
 
     },
 
+    replySave: function() {
+        let data = {
+            content: $("#reply-content").val()
+        };
+        let boardId = $("#boardId").val();
+
+
+        $.ajax({
+            type: "POST",
+            url: `/api/board/${boardId}/reply`,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+
+        }).done(function(resp) {
+            alert("댓글 작성이 완료되었습니다.");
+            location.href = `/board/${boardId}`;
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
+
+
+    },
 
 }
 

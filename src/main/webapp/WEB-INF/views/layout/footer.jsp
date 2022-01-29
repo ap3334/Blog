@@ -5,7 +5,6 @@
   <p>💻Created by jungwon</p>
   <p>☎010-2222-8888</p>
   <p>🏴경기도 XX시 XX구 XX동</p>
-
 </div>
 
 </body>
