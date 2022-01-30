@@ -35,7 +35,7 @@ public class Board {
     @JoinColumn(name="userId")
     private User user; // DB는 오브젝트를 저장할 수 없음 (FK 사용), 자바는 오브젝트 저장 가능 -> 충돌 발생
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy : 연관관계의 주인이 아님 -> FK가 아님 -> DB에 컬럼을 만들지 X
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) // mappedBy : 연관관계의 주인이 아님 -> FK가 아님 -> DB에 컬럼을 만들지 X
     @JsonIgnoreProperties({"board"})
     @OrderBy("createDate desc")
     private List<Reply> replys;
