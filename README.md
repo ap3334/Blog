@@ -1,4 +1,4 @@
-# 🖥 Blog Project
+# 🖥 Blog
 
 <h3>간단한 CRUD 기능이 있는 블로그 토이 프로젝트</h3>
 
